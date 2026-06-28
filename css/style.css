@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600&family=Space+Grotesk:wght@500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600&family=Space+Grotesk:wght@500;600;700&display=swap");
 
 :root {
   --color-ink: #0b0b0b;
@@ -142,7 +142,7 @@ main:empty {
   left: 0;
   height: 0.125rem;
   content: "";
-  background: var(--color-accent);
+  background: #ffc433;
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform 220ms ease;
@@ -262,6 +262,128 @@ main:empty {
   outline-offset: 0.25rem;
 }
 
+.home-hero {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  padding:
+    calc(var(--header-height) + clamp(2rem, 5vh, 4rem))
+    var(--header-inline-padding)
+    clamp(3rem, 8vh, 6rem);
+  overflow: hidden;
+  color: var(--color-paper);
+  background-color: var(--color-ink);
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(11, 11, 11, 0.72) 0%,
+      rgba(11, 11, 11, 0.42) 52%,
+      rgba(11, 11, 11, 0.1) 100%
+    ),
+    url("../images/homepage/hero.webp");
+  background-position: center;
+  background-size: cover;
+}
+
+.home-hero__inner {
+  width: min(100%, 90rem);
+  margin-inline: auto;
+}
+
+.home-hero__content {
+  width: min(100%, 44rem);
+}
+
+.home-hero__title {
+  margin: 0;
+  color: var(--color-paper);
+  font-family: "Space Grotesk", Arial, sans-serif;
+  font-size: clamp(4rem, 10vw, 8.5rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 0.9;
+  text-wrap: balance;
+  text-shadow: 0 0.2rem 1.2rem rgba(0, 0, 0, 0.3);
+}
+
+.home-hero__letter {
+  color: var(--color-paper);
+  will-change: color;
+}
+
+.home-hero__letter--g {
+  animation: hero-letter-g 12s ease-in-out infinite;
+}
+
+.home-hero__letter--q {
+  animation: hero-letter-q 12s ease-in-out infinite;
+}
+
+.home-hero__letter--c {
+  animation: hero-letter-c 12s ease-in-out infinite;
+}
+
+.home-hero__subtext {
+  max-width: 38rem;
+  margin: clamp(1rem, 2.5vh, 1.5rem) 0 0;
+  color: var(--color-paper);
+  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  font-weight: 500;
+  line-height: 1.55;
+  text-shadow: 0 0.125rem 0.8rem rgba(0, 0, 0, 0.55);
+}
+
+@keyframes hero-letter-g {
+  0%,
+  25% {
+    color: #64b8c4;
+  }
+
+  30%,
+  95% {
+    color: var(--color-paper);
+  }
+
+  100% {
+    color: #64b8c4;
+  }
+}
+
+@keyframes hero-letter-q {
+  0%,
+  27% {
+    color: var(--color-paper);
+  }
+
+  32%,
+  57% {
+    color: #f66265;
+  }
+
+  62%,
+  100% {
+    color: var(--color-paper);
+  }
+}
+
+@keyframes hero-letter-c {
+  0%,
+  59% {
+    color: var(--color-paper);
+  }
+
+  64%,
+  89% {
+    color: #ffc433;
+  }
+
+  94%,
+  100% {
+    color: var(--color-paper);
+  }
+}
+
 @keyframes logo-spin-clockwise {
   to {
     transform: rotate(360deg);
@@ -287,6 +409,10 @@ main:empty {
   .site-header__menu-toggle {
     display: block;
   }
+
+  .home-hero {
+    background-position: 58% center;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -302,5 +428,11 @@ main:empty {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .home-hero__letter {
+    color: var(--color-paper);
+    animation: none;
+    will-change: auto;
   }
 }
