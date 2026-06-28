@@ -38,6 +38,51 @@
   <script src="js/script.js" defer></script>
 </head>
 <body>
+  <header class="site-header" data-site-header>
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html" aria-label="GQCube homepage" data-header-logo>
+        <img src="images/logo/favicon.webp" alt="" width="48" height="48">
+      </a>
+
+      <nav class="site-header__nav" aria-label="Primary navigation">
+        <ul class="site-header__nav-list">
+          <li><a class="site-header__nav-link" href="index.html" aria-current="page">Home</a></li>
+          <li><a class="site-header__nav-link" href="html/about.html">About</a></li>
+          <li><a class="site-header__nav-link" href="html/products.html">Products</a></li>
+          <li><a class="site-header__nav-link" href="html/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a class="site-header__cta site-header__cta--desktop" href="html/contact.html">Get in Touch</a>
+
+      <button
+        class="site-header__menu-toggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        data-menu-toggle
+      >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <div class="site-header__mobile-menu" id="mobile-menu" data-mobile-menu hidden>
+      <nav aria-label="Mobile navigation">
+        <ul class="site-header__mobile-nav-list">
+          <li><a class="site-header__nav-link" href="index.html" aria-current="page">Home</a></li>
+          <li><a class="site-header__nav-link" href="html/about.html">About</a></li>
+          <li><a class="site-header__nav-link" href="html/products.html">Products</a></li>
+          <li><a class="site-header__nav-link" href="html/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a class="site-header__cta site-header__cta--mobile" href="html/contact.html">Get in Touch</a>
+    </div>
+  </header>
+
   <main id="main-content"></main>
 </body>
 </html>
