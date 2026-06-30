@@ -177,6 +177,32 @@
       updateScrolledState();
     });
 
+    document.querySelectorAll("[data-footer-logo]").forEach((logo) => {
+      let nextLogoRotation = "clockwise";
+
+      logo.addEventListener("pointerenter", (event) => {
+        if (event.pointerType === "touch") {
+          return;
+        }
+
+        logo.classList.remove(
+          "is-rotating-clockwise",
+          "is-rotating-counterclockwise",
+        );
+        logo.classList.add(`is-rotating-${nextLogoRotation}`);
+        nextLogoRotation = nextLogoRotation === "clockwise"
+          ? "counterclockwise"
+          : "clockwise";
+      });
+
+      logo.addEventListener("pointerleave", () => {
+        logo.classList.remove(
+          "is-rotating-clockwise",
+          "is-rotating-counterclockwise",
+        );
+      });
+    });
+
     revealOnIntersect(document.querySelectorAll("[data-reveal]"));
   });
 })();
