@@ -53,11 +53,49 @@
       const mobileMenu = header.querySelector("[data-mobile-menu]");
       const logo = header.querySelector("[data-header-logo]");
       const desktopMedia = window.matchMedia("(min-width: 50.0625rem)");
+      const navLinks = Array.from(
+        header.querySelectorAll(".site-header__nav-link"),
+      );
+      const homeLinks = navLinks.filter((link) => (
+        link.getAttribute("href") === "index.html"
+      ));
+      const trackedSections = ["about", "contact"]
+        .map((id) => ({
+          element: document.getElementById(id),
+          links: navLinks.filter((link) => (
+            link.getAttribute("href") === `#${id}`
+          )),
+        }))
+        .filter(({ element, links }) => element && links.length > 0);
       let nextLogoRotation = "clockwise";
       let scrollFrame = null;
 
+      const updateSectionNavigation = () => {
+        if (trackedSections.length === 0) {
+          return;
+        }
+
+        const viewportMarker = Math.min(window.innerHeight * 0.35, 280);
+        const activeSection = trackedSections.find(({ element }) => {
+          const bounds = element.getBoundingClientRect();
+          return bounds.top <= viewportMarker && bounds.bottom > viewportMarker;
+        });
+
+        navLinks.forEach((link) => link.removeAttribute("aria-current"));
+
+        if (activeSection) {
+          activeSection.links.forEach((link) => {
+            link.setAttribute("aria-current", "location");
+          });
+          return;
+        }
+
+        homeLinks.forEach((link) => link.setAttribute("aria-current", "page"));
+      };
+
       const updateScrolledState = () => {
         header.classList.toggle("is-scrolled", window.scrollY > 12);
+        updateSectionNavigation();
         scrollFrame = null;
       };
 
@@ -135,6 +173,7 @@
       });
 
       window.addEventListener("scroll", requestScrollUpdate, { passive: true });
+      window.addEventListener("resize", requestScrollUpdate);
       updateScrolledState();
     });
 

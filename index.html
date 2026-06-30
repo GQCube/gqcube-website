@@ -47,13 +47,13 @@
       <nav class="site-header__nav" aria-label="Primary navigation">
         <ul class="site-header__nav-list">
           <li><a class="site-header__nav-link" href="index.html" aria-current="page">Home</a></li>
-          <li><a class="site-header__nav-link" href="html/about.html">About</a></li>
+          <li><a class="site-header__nav-link" href="#about">About</a></li>
           <li><a class="site-header__nav-link" href="html/products.html">Products</a></li>
-          <li><a class="site-header__nav-link" href="html/contact.html">Contact</a></li>
+          <li><a class="site-header__nav-link" href="#contact">Contact</a></li>
         </ul>
       </nav>
 
-      <a class="site-header__cta site-header__cta--desktop" href="html/contact.html">Get in Touch</a>
+      <a class="site-header__cta site-header__cta--desktop" href="#contact">Get in Touch</a>
 
       <button
         class="site-header__menu-toggle"
@@ -73,13 +73,13 @@
       <nav aria-label="Mobile navigation">
         <ul class="site-header__mobile-nav-list">
           <li><a class="site-header__nav-link" href="index.html" aria-current="page">Home</a></li>
-          <li><a class="site-header__nav-link" href="html/about.html">About</a></li>
+          <li><a class="site-header__nav-link" href="#about">About</a></li>
           <li><a class="site-header__nav-link" href="html/products.html">Products</a></li>
-          <li><a class="site-header__nav-link" href="html/contact.html">Contact</a></li>
+          <li><a class="site-header__nav-link" href="#contact">Contact</a></li>
         </ul>
       </nav>
 
-      <a class="site-header__cta site-header__cta--mobile" href="html/contact.html">Get in Touch</a>
+      <a class="site-header__cta site-header__cta--mobile" href="#contact">Get in Touch</a>
     </div>
   </header>
 
@@ -190,6 +190,107 @@
             <span class="products-preview__link-word products-preview__link-word--products">Products</span>
           </a>
         </div>
+      </div>
+    </section>
+
+    <section class="home-split home-about" id="about" aria-labelledby="home-about-title">
+      <div class="home-split__content">
+        <h2 class="home-split__title" id="home-about-title" data-reveal>About Us</h2>
+
+        <p class="home-about__description" data-reveal>
+          GQCube is a software-first automation company building products that help people and businesses operate with less manual effort. Our focus is creating systems that connect tools, automate repeated processes, organize information, and make useful actions happen more smoothly. As technology evolves, GQCube continues building automation products for life, work, and business operations with one goal: better systems for better outcomes.
+        </p>
+      </div>
+
+      <div class="home-split__media">
+        <img
+          class="home-split__image"
+          src="images/homepage/about.webp"
+          alt="Modern workspace with a laptop and connected geometric automation elements"
+          width="1200"
+          height="1200"
+          loading="lazy"
+        >
+      </div>
+    </section>
+
+    <section class="home-split home-contact" id="contact" aria-labelledby="home-contact-title">
+      <div class="home-split__media">
+        <img
+          class="home-split__image"
+          src="images/homepage/contact.webp"
+          alt="Connected geometric systems representing automated communication and workflows"
+          width="1200"
+          height="1200"
+          loading="lazy"
+        >
+      </div>
+
+      <div class="home-split__content">
+        <h2 class="home-split__title" id="home-contact-title" data-reveal>Contact Us</h2>
+
+        <form class="contact-form" data-reveal>
+          <div class="contact-form__row">
+            <div class="contact-form__field">
+              <label for="contact-name">Name</label>
+              <input
+                id="contact-name"
+                name="name"
+                type="text"
+                placeholder="Enter your full name"
+                autocomplete="name"
+                required
+              >
+            </div>
+
+            <div class="contact-form__field">
+              <label for="contact-email">Email</label>
+              <input
+                id="contact-email"
+                name="email"
+                type="email"
+                placeholder="Enter your email address"
+                autocomplete="email"
+                required
+              >
+            </div>
+          </div>
+
+          <div class="contact-form__field">
+            <label for="contact-type">Type</label>
+            <select id="contact-type" name="type" required>
+              <option value="" selected disabled>Select message type</option>
+              <option value="general-inquiry">General Inquiry</option>
+              <option value="product-interest">Product Interest</option>
+              <option value="automation-idea">Automation Idea</option>
+              <option value="business-opportunity">Business Opportunity</option>
+              <option value="support">Support</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="contact-form__field">
+            <label for="contact-message">Message</label>
+            <textarea
+              id="contact-message"
+              name="message"
+              placeholder="Tell us how can we help"
+              rows="5"
+              required
+            ></textarea>
+          </div>
+
+          <button class="contact-form__submit" type="submit">Submit</button>
+        </form>
+
+        <p class="home-contact__email" data-reveal>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <rect x="2.5" y="4.5" width="19" height="15" rx="2"></rect>
+            <path d="m4 7 8 6 8-6"></path>
+          </svg>
+          <span>Email:</span>
+          <a href="mailto:hello@gqcube.com">hello@gqcube.com</a>
+        </p>
       </div>
     </section>
   </main>
