@@ -47,17 +47,47 @@
     targets.forEach((target) => observer.observe(target));
   };
 
+  const setupAlternatingLogoRotation = (logo) => {
+    if (!logo) {
+      return;
+    }
+
+    let nextRotation = "clockwise";
+
+    logo.addEventListener("pointerenter", (event) => {
+      if (event.pointerType === "touch") {
+        return;
+      }
+
+      logo.classList.remove(
+        "is-rotating-clockwise",
+        "is-rotating-counterclockwise",
+      );
+      logo.classList.add(`is-rotating-${nextRotation}`);
+      nextRotation = nextRotation === "clockwise"
+        ? "counterclockwise"
+        : "clockwise";
+    });
+
+    logo.addEventListener("pointerleave", () => {
+      logo.classList.remove(
+        "is-rotating-clockwise",
+        "is-rotating-counterclockwise",
+      );
+    });
+  };
+
   onReady(() => {
     document.querySelectorAll("[data-site-header]").forEach((header) => {
       const menuToggle = header.querySelector("[data-menu-toggle]");
       const mobileMenu = header.querySelector("[data-mobile-menu]");
       const logo = header.querySelector("[data-header-logo]");
-      const desktopMedia = window.matchMedia("(min-width: 50.0625rem)");
+      const desktopHeaderMedia = window.matchMedia("(min-width: 50.0625rem)");
       const navLinks = Array.from(
         header.querySelectorAll(".site-header__nav-link"),
       );
       const homeLinks = navLinks.filter((link) => (
-        link.getAttribute("href") === "index.html"
+        link.getAttribute("href") === "/"
       ));
       const trackedSections = ["about", "contact"]
         .map((id) => ({
@@ -67,7 +97,6 @@
           )),
         }))
         .filter(({ element, links }) => element && links.length > 0);
-      let nextLogoRotation = "clockwise";
       let scrollFrame = null;
 
       const updateSectionNavigation = () => {
@@ -144,64 +173,22 @@
         }
       });
 
-      desktopMedia.addEventListener("change", (event) => {
+      desktopHeaderMedia.addEventListener("change", (event) => {
         if (event.matches) {
           setMenuState(false);
         }
       });
 
-      logo?.addEventListener("pointerenter", (event) => {
-        if (event.pointerType === "touch") {
-          return;
-        }
-
-        logo.classList.remove(
-          "is-rotating-clockwise",
-          "is-rotating-counterclockwise",
-        );
-        logo.classList.add(`is-rotating-${nextLogoRotation}`);
-        nextLogoRotation = nextLogoRotation === "clockwise"
-          ? "counterclockwise"
-          : "clockwise";
-      });
-
-      logo?.addEventListener("pointerleave", () => {
-        logo.classList.remove(
-          "is-rotating-clockwise",
-          "is-rotating-counterclockwise",
-        );
-      });
+      setupAlternatingLogoRotation(logo);
 
       window.addEventListener("scroll", requestScrollUpdate, { passive: true });
       window.addEventListener("resize", requestScrollUpdate);
       updateScrolledState();
     });
 
-    document.querySelectorAll("[data-footer-logo]").forEach((logo) => {
-      let nextLogoRotation = "clockwise";
-
-      logo.addEventListener("pointerenter", (event) => {
-        if (event.pointerType === "touch") {
-          return;
-        }
-
-        logo.classList.remove(
-          "is-rotating-clockwise",
-          "is-rotating-counterclockwise",
-        );
-        logo.classList.add(`is-rotating-${nextLogoRotation}`);
-        nextLogoRotation = nextLogoRotation === "clockwise"
-          ? "counterclockwise"
-          : "clockwise";
-      });
-
-      logo.addEventListener("pointerleave", () => {
-        logo.classList.remove(
-          "is-rotating-clockwise",
-          "is-rotating-counterclockwise",
-        );
-      });
-    });
+    document
+      .querySelectorAll("[data-footer-logo]")
+      .forEach(setupAlternatingLogoRotation);
 
     revealOnIntersect(document.querySelectorAll("[data-reveal]"));
   });

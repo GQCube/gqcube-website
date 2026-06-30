@@ -1,9 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600&family=Space+Grotesk:wght@500;600;700&display=swap");
-
 :root {
   --color-ink: #0b0b0b;
   --color-paper: #fafafa;
   --color-accent: #f66265;
+  --color-brand-blue: #64b8c4;
+  --color-brand-yellow: #ffc433;
+  --font-body: "IBM Plex Sans", Arial, sans-serif;
+  --font-heading: "Space Grotesk", Arial, sans-serif;
   --header-height: 5rem;
   --header-inline-padding: clamp(1.25rem, 4vw, 4rem);
 }
@@ -20,16 +22,32 @@ html {
 
 body {
   margin: 0;
+  font-family: var(--font-body);
 }
 
 body.has-open-menu {
   overflow: hidden;
 }
 
-/* Temporary empty-page canvas; it disappears as soon as page content is added. */
-main:empty {
-  min-height: 100vh;
-  background: var(--color-ink);
+.skip-link {
+  position: fixed;
+  z-index: 1100;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.7rem 1rem;
+  border-radius: 0.4rem;
+  color: var(--color-ink);
+  background: var(--color-brand-yellow);
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(calc(-100% - 1rem));
+  transition: transform 180ms ease;
+}
+
+.skip-link:focus {
+  outline: 0.1875rem solid var(--color-accent);
+  outline-offset: 0.2rem;
+  transform: translateY(0);
 }
 
 .site-header {
@@ -132,7 +150,7 @@ main:empty {
   display: inline-block;
   padding-block: 0.45rem;
   color: inherit;
-  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-family: var(--font-body);
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.2;
@@ -147,7 +165,7 @@ main:empty {
   left: 0;
   height: 0.125rem;
   content: "";
-  background: #ffc433;
+  background: var(--color-brand-yellow);
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform 220ms ease;
@@ -173,7 +191,7 @@ main:empty {
   border-radius: 999px;
   color: var(--color-ink);
   background: var(--color-accent);
-  font-family: "Space Grotesk", Arial, sans-serif;
+  font-family: var(--font-heading);
   font-size: 0.95rem;
   font-weight: 700;
   line-height: 1;
@@ -272,6 +290,7 @@ main:empty {
   display: flex;
   align-items: center;
   min-height: 100vh;
+  min-height: 100svh;
   padding:
     calc(var(--header-height) + clamp(2rem, 5vh, 4rem))
     var(--header-inline-padding)
@@ -303,7 +322,7 @@ main:empty {
 .home-hero__title {
   margin: 0;
   color: var(--color-paper);
-  font-family: "Space Grotesk", Arial, sans-serif;
+  font-family: var(--font-heading);
   font-size: clamp(4rem, 10vw, 8.5rem);
   font-weight: 700;
   letter-spacing: -0.06em;
@@ -314,26 +333,31 @@ main:empty {
 
 .home-hero__letter {
   color: var(--color-paper);
-  will-change: color;
+  animation-duration: 12s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
 }
 
-.home-hero__letter--g {
-  animation: hero-letter-g 12s ease-in-out infinite;
+.home-hero__letter--g,
+.products-preview__link-word--view {
+  animation-name: brand-color-blue;
 }
 
-.home-hero__letter--q {
-  animation: hero-letter-q 12s ease-in-out infinite;
+.home-hero__letter--q,
+.products-preview__link-word--all {
+  animation-name: brand-color-coral;
 }
 
-.home-hero__letter--c {
-  animation: hero-letter-c 12s ease-in-out infinite;
+.home-hero__letter--c,
+.products-preview__link-word--products {
+  animation-name: brand-color-yellow;
 }
 
 .home-hero__subtext {
   max-width: 38rem;
   margin: clamp(1rem, 2.5vh, 1.5rem) 0 0;
   color: var(--color-paper);
-  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(1.05rem, 2vw, 1.35rem);
   font-weight: 500;
   line-height: 1.55;
@@ -343,7 +367,7 @@ main:empty {
 .what-we-build {
   padding: clamp(1.5rem, 3vw, 2.25rem) var(--header-inline-padding);
   color: var(--color-paper);
-  background-color: #64b8c4;
+  background-color: var(--color-brand-blue);
   background-image:
     linear-gradient(rgba(11, 11, 11, 0.26), rgba(11, 11, 11, 0.26)),
     url("../images/texture/texture-4.webp");
@@ -408,7 +432,7 @@ main:empty {
 .what-we-build__name {
   margin: 0;
   color: var(--color-paper);
-  font-family: "Space Grotesk", Arial, sans-serif;
+  font-family: var(--font-heading);
   font-size: clamp(1.05rem, 1.6vw, 1.25rem);
   font-weight: 700;
   line-height: 1.2;
@@ -417,7 +441,7 @@ main:empty {
 .what-we-build__description {
   margin: 0.45rem 0 0;
   color: var(--color-paper);
-  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-family: var(--font-body);
   font-size: 0.98rem;
   font-weight: 500;
   line-height: 1.5;
@@ -458,7 +482,7 @@ main:empty {
 .products-preview__phrase,
 .products-preview__link {
   color: var(--color-paper);
-  font-family: "Space Grotesk", Arial, sans-serif;
+  font-family: var(--font-heading);
   font-size: clamp(1.4rem, 2.4vw, 2.4rem);
   font-weight: 600;
   line-height: 1.1;
@@ -517,7 +541,7 @@ main:empty {
 
 .products-preview__link:focus-visible {
   border-radius: 0.2rem;
-  outline: 0.1875rem solid #ffc433;
+  outline: 0.1875rem solid var(--color-brand-yellow);
   outline-offset: 0.4rem;
 }
 
@@ -526,18 +550,6 @@ main:empty {
   animation-duration: 12s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
-}
-
-.products-preview__link-word--view {
-  animation-name: products-preview-link-view;
-}
-
-.products-preview__link-word--all {
-  animation-name: products-preview-link-all;
-}
-
-.products-preview__link-word--products {
-  animation-name: products-preview-link-products;
 }
 
 .products-page {
@@ -564,7 +576,7 @@ main:empty {
   justify-content: center;
   margin: 0;
   color: var(--color-paper);
-  font-family: "Space Grotesk", Arial, sans-serif;
+  font-family: var(--font-heading);
   font-size: clamp(0.85rem, 5.4vw, 5rem);
   font-weight: 700;
   letter-spacing: 0.025em;
@@ -581,17 +593,17 @@ main:empty {
 }
 
 .products-coming-soon__word--products {
-  --word-highlight: #64b8c4;
+  --word-highlight: var(--color-brand-blue);
 }
 
 .products-coming-soon__word--coming {
-  --word-highlight: #f66265;
+  --word-highlight: var(--color-accent);
 
   animation-delay: 4s;
 }
 
 .products-coming-soon__word--soon {
-  --word-highlight: #ffc433;
+  --word-highlight: var(--color-brand-yellow);
 
   animation-delay: 8s;
 }
@@ -646,7 +658,7 @@ main:empty {
 .home-split__title {
   margin: 0;
   color: var(--color-ink);
-  font-family: "Space Grotesk", Arial, sans-serif;
+  font-family: var(--font-heading);
   font-size: clamp(2rem, 3.5vw, 3.5rem);
   font-weight: 700;
   line-height: 1.1;
@@ -668,7 +680,7 @@ main:empty {
   width: min(100%, 42rem);
   margin: 0 auto;
   color: var(--color-ink);
-  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(1rem, 1.35vw, 1.15rem);
   font-weight: 500;
   line-height: 1.7;
@@ -708,7 +720,7 @@ main:empty {
   background-size: auto, 30rem 30rem;
   border-radius: 1rem;
   box-shadow: 0 1rem 2.5rem rgba(11, 11, 11, 0.12);
-  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-family: var(--font-body);
 }
 
 .contact-form__row {
@@ -769,7 +781,7 @@ main:empty {
 .contact-form__field input:focus-visible,
 .contact-form__field select:focus-visible,
 .contact-form__field textarea:focus-visible {
-  border-color: #64b8c4;
+  border-color: var(--color-brand-blue);
   box-shadow: 0 0 0 0.2rem rgba(100, 184, 196, 0.28);
 }
 
@@ -781,8 +793,8 @@ main:empty {
   border: 0;
   border-radius: 0.65rem;
   color: var(--color-ink);
-  background: #f66265;
-  font-family: "Space Grotesk", Arial, sans-serif;
+  background: var(--color-accent);
+  font-family: var(--font-heading);
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
@@ -802,7 +814,7 @@ main:empty {
 }
 
 .contact-form__submit:focus-visible {
-  outline: 0.1875rem solid #ffc433;
+  outline: 0.1875rem solid var(--color-brand-yellow);
   outline-offset: 0.25rem;
 }
 
@@ -813,7 +825,7 @@ main:empty {
   justify-content: center;
   margin: 0;
   color: var(--color-ink);
-  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-family: var(--font-body);
   font-size: 0.95rem;
   font-weight: 500;
 }
@@ -840,13 +852,13 @@ main:empty {
 
 .home-contact__email a:focus-visible {
   border-radius: 0.15rem;
-  outline: 0.1875rem solid #f66265;
+  outline: 0.1875rem solid var(--color-accent);
   outline-offset: 0.2rem;
 }
 
 .site-footer {
   color: var(--color-paper);
-  background-color: #64b8c4;
+  background-color: var(--color-brand-blue);
   background-image:
     linear-gradient(rgba(11, 11, 11, 0.26), rgba(11, 11, 11, 0.26)),
     url("../images/texture/texture-4.webp");
@@ -906,7 +918,7 @@ main:empty {
 .site-footer__company {
   margin: 0;
   color: var(--color-paper);
-  font-family: "Space Grotesk", Arial, sans-serif;
+  font-family: var(--font-heading);
   font-size: clamp(1.5rem, 2.5vw, 2rem);
   font-weight: 700;
   line-height: 1.1;
@@ -920,7 +932,7 @@ main:empty {
 .site-footer__heading {
   margin: 0 0 1rem;
   color: var(--color-paper);
-  font-family: "Space Grotesk", Arial, sans-serif;
+  font-family: var(--font-heading);
   font-size: clamp(1.2rem, 1.8vw, 1.5rem);
   font-weight: 700;
   line-height: 1.2;
@@ -938,7 +950,7 @@ main:empty {
 .site-footer__email > a {
   display: inline-block;
   color: var(--color-paper);
-  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-family: var(--font-body);
   font-size: 1rem;
   font-weight: 500;
   text-decoration-color: rgba(250, 250, 250, 0.55);
@@ -956,14 +968,14 @@ main:empty {
 
 .site-footer__links a:hover,
 .site-footer__email > a:hover {
-  color: #ffc433;
+  color: var(--color-brand-yellow);
   transform: translateX(0.2rem);
 }
 
 .site-footer__links a:focus-visible,
 .site-footer__email > a:focus-visible {
   border-radius: 0.15rem;
-  outline: 0.1875rem solid #ffc433;
+  outline: 0.1875rem solid var(--color-brand-yellow);
   outline-offset: 0.25rem;
 }
 
@@ -992,7 +1004,7 @@ main:empty {
 .site-footer__bottom p {
   margin: 0;
   color: var(--color-paper);
-  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-family: var(--font-body);
   font-size: 0.95rem;
   font-weight: 500;
   line-height: 1.5;
@@ -1049,10 +1061,10 @@ main:empty {
   }
 }
 
-@keyframes products-preview-link-view {
+@keyframes brand-color-blue {
   0%,
   25% {
-    color: #64b8c4;
+    color: var(--color-brand-blue);
   }
 
   30%,
@@ -1061,11 +1073,11 @@ main:empty {
   }
 
   100% {
-    color: #64b8c4;
+    color: var(--color-brand-blue);
   }
 }
 
-@keyframes products-preview-link-all {
+@keyframes brand-color-coral {
   0%,
   27% {
     color: var(--color-paper);
@@ -1073,7 +1085,7 @@ main:empty {
 
   32%,
   57% {
-    color: #f66265;
+    color: var(--color-accent);
   }
 
   62%,
@@ -1082,7 +1094,7 @@ main:empty {
   }
 }
 
-@keyframes products-preview-link-products {
+@keyframes brand-color-yellow {
   0%,
   59% {
     color: var(--color-paper);
@@ -1090,57 +1102,7 @@ main:empty {
 
   64%,
   89% {
-    color: #ffc433;
-  }
-
-  94%,
-  100% {
-    color: var(--color-paper);
-  }
-}
-
-@keyframes hero-letter-g {
-  0%,
-  25% {
-    color: #64b8c4;
-  }
-
-  30%,
-  95% {
-    color: var(--color-paper);
-  }
-
-  100% {
-    color: #64b8c4;
-  }
-}
-
-@keyframes hero-letter-q {
-  0%,
-  27% {
-    color: var(--color-paper);
-  }
-
-  32%,
-  57% {
-    color: #f66265;
-  }
-
-  62%,
-  100% {
-    color: var(--color-paper);
-  }
-}
-
-@keyframes hero-letter-c {
-  0%,
-  59% {
-    color: var(--color-paper);
-  }
-
-  64%,
-  89% {
-    color: #ffc433;
+    color: var(--color-brand-yellow);
   }
 
   94%,
@@ -1306,7 +1268,10 @@ main:empty {
   .home-hero__letter {
     color: var(--color-paper);
     animation: none;
-    will-change: auto;
+  }
+
+  .skip-link {
+    transition: none;
   }
 
   .what-we-build__inner.is-reveal-ready {

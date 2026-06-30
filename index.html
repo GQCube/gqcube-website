@@ -12,8 +12,7 @@
     content="GQCube builds software-first automation products that reduce manual work, connect tools, streamline processes, and create systems for better outcomes."
   >
 
-  <!-- Replace example.com with the production domain before launch. -->
-  <link rel="canonical" href="https://www.example.com/">
+  <link rel="canonical" href="https://gqcube.com/">
 
   <meta property="og:site_name" content="GQCube">
   <meta property="og:title" content="GQCube | Software-First Automation Products">
@@ -22,8 +21,8 @@
     content="Software-first automation products that reduce manual work, connect tools, automate processes, and create systems for better outcomes."
   >
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.example.com/">
-  <meta property="og:image" content="https://www.example.com/images/homepage/hero.webp">
+  <meta property="og:url" content="https://gqcube.com/">
+  <meta property="og:image" content="https://gqcube.com/images/homepage/hero.webp">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="GQCube | Software-First Automation Products">
@@ -31,24 +30,39 @@
     name="twitter:description"
     content="Software-first automation products that reduce manual work, connect tools, and automate processes."
   >
-  <meta name="twitter:image" content="https://www.example.com/images/homepage/hero.webp">
+  <meta name="twitter:image" content="https://gqcube.com/images/homepage/hero.webp">
 
   <link rel="icon" href="images/logo/favicon.webp" type="image/webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+  >
+  <link
+    rel="preload"
+    href="images/homepage/hero.webp"
+    as="image"
+    type="image/webp"
+    fetchpriority="high"
+  >
   <link rel="stylesheet" href="css/style.css">
   <script src="js/script.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
   <header class="site-header" data-site-header>
     <div class="site-header__inner">
-      <a class="site-header__logo" href="index.html" aria-label="GQCube homepage" data-header-logo>
+      <a class="site-header__logo" href="/" aria-label="GQCube homepage" data-header-logo>
         <img src="images/logo/favicon.webp" alt="" width="48" height="48">
       </a>
 
       <nav class="site-header__nav" aria-label="Primary navigation">
         <ul class="site-header__nav-list">
-          <li><a class="site-header__nav-link" href="index.html" aria-current="page">Home</a></li>
+          <li><a class="site-header__nav-link" href="/" aria-current="page">Home</a></li>
           <li><a class="site-header__nav-link" href="#about">About</a></li>
-          <li><a class="site-header__nav-link" href="html/products.html">Products</a></li>
+          <li><a class="site-header__nav-link" href="/products/">Products</a></li>
           <li><a class="site-header__nav-link" href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -72,9 +86,9 @@
     <div class="site-header__mobile-menu" id="mobile-menu" data-mobile-menu hidden>
       <nav aria-label="Mobile navigation">
         <ul class="site-header__mobile-nav-list">
-          <li><a class="site-header__nav-link" href="index.html" aria-current="page">Home</a></li>
+          <li><a class="site-header__nav-link" href="/" aria-current="page">Home</a></li>
           <li><a class="site-header__nav-link" href="#about">About</a></li>
-          <li><a class="site-header__nav-link" href="html/products.html">Products</a></li>
+          <li><a class="site-header__nav-link" href="/products/">Products</a></li>
           <li><a class="site-header__nav-link" href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -115,7 +129,7 @@
             </svg>
 
             <div>
-              <h3 class="what-we-build__name">Automate Workflows</h3>
+              <h2 class="what-we-build__name">Automate Workflows</h2>
               <p class="what-we-build__description">
                 Products that reduce repeated manual work and keep processes moving.
               </p>
@@ -137,7 +151,7 @@
             </svg>
 
             <div>
-              <h3 class="what-we-build__name">Connect Tools</h3>
+              <h2 class="what-we-build__name">Connect Tools</h2>
               <p class="what-we-build__description">
                 Products that link apps, data, and systems into smoother workflows.
               </p>
@@ -159,7 +173,7 @@
             </svg>
 
             <div>
-              <h3 class="what-we-build__name">Improve Decisions</h3>
+              <h2 class="what-we-build__name">Improve Decisions</h2>
               <p class="what-we-build__description">
                 Products that organize information and surface what deserves attention.
               </p>
@@ -184,7 +198,7 @@
         </div>
 
         <div class="products-preview__panel">
-          <a class="products-preview__link" href="html/products.html">
+          <a class="products-preview__link" href="/products/">
             <span class="products-preview__link-word products-preview__link-word--view">View</span>
             <span class="products-preview__link-word products-preview__link-word--all">All</span>
             <span class="products-preview__link-word products-preview__link-word--products">Products</span>
@@ -231,7 +245,7 @@
       <div class="home-split__content">
         <h2 class="home-split__title" id="home-contact-title" data-reveal>Contact Us</h2>
 
-        <form class="contact-form" data-reveal>
+        <form class="contact-form" aria-labelledby="home-contact-title" data-reveal>
           <div class="contact-form__row">
             <div class="contact-form__field">
               <label for="contact-name">Name</label>
@@ -318,7 +332,7 @@
         <nav class="site-footer__links" aria-labelledby="footer-links-title">
           <h2 class="site-footer__heading" id="footer-links-title">Quick Links</h2>
           <ul>
-            <li><a href="html/products.html">Products</a></li>
+            <li><a href="/products/">Products</a></li>
             <li><a href="#contact">Contact</a></li>
             <li><a href="#about">About</a></li>
           </ul>
